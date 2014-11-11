@@ -12,6 +12,8 @@ import java.net.URLClassLoader;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import org.netbeans.api.settings.ConvertAsProperties;
+import org.openide.awt.ActionID;
+import org.openide.awt.ActionReference;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
@@ -29,6 +31,11 @@ autostore = false)
 //iconBase="SET/PATH/TO/ICON/HERE",
 persistenceType = TopComponent.PERSISTENCE_ALWAYS)
 @TopComponent.Registration(mode = "editor", openAtStartup = false)
+@ActionID(category = "Window", id = "com.ractoc.fs.templates.editor.EtplTopComponent")
+@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@TopComponent.OpenActionRegistration(
+        displayName = "#CTL_EtplAction",
+        preferredID = "EtplTopComponent")
 @Messages({
     "CTL_EtplAction=Etpl",
     "CTL_EtplTopComponent=Etpl Window",
@@ -41,7 +48,7 @@ public final class EtplTopComponent extends CloneableTopComponent {
     private EntityTemplate template;
 
     public EtplTopComponent() {
-        super();
+        //super();
         initComponents();
         setName(Bundle.CTL_EtplTopComponent());
         setToolTipText(Bundle.HINT_EtplTopComponent());
